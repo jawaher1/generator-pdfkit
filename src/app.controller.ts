@@ -5,10 +5,7 @@ import { Response as Res } from 'express';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+  
   @Get('/pdf')
   async getPDF(
     @Response() res: Res,
