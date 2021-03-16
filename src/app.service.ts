@@ -18,7 +18,7 @@ export class AppService {
       amount: 2000,
     },
   ];
-  generatedivs(doc, y, divs, height,colors) {
+  generateDivs(doc, y, divs, height,colors) {
     const TopPosition = doc.y + 20
     var leftpos = 10
     var wi = doc.page.width / divs.length
@@ -114,14 +114,14 @@ export class AppService {
 
 
       this.generateInvoiceTable(doc, this.items)
-      this.generatedivs(doc, doc.y, ["hello", "world"], 150, ["grey","#010101"])
-      this.generatedivs(doc, 0, ["hello", "world", "hello","world"], 150, ["grey","#010101","grey","#010101"])
+      this.generateDivs(doc, doc.y, ["hello", "world"], 150, ["grey","#010101"])
+      this.generateDivs(doc, 0, ["hello", "world", "hello","world"], 150, ["grey","#010101","grey","#010101"])
       doc.text('',doc.x,doc.y)
       console.log(doc.y)
       if (doc.y > 650) {
         this.addpage(doc)
      }
-      this.generatedivs(doc, doc.y, ["hello", "world", "123!"], 150, ["grey","#010101","grey"])
+      this.generateDivs(doc, doc.y, ["hello", "world", "123!"], 150, ["grey","#010101","grey"])
       
 
 
