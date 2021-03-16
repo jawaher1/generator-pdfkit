@@ -77,6 +77,14 @@ export class AppService {
       );
     }
   }
+  addpage(doc){
+    this.generateFooter(doc)
+    doc.addPage();
+    
+    this.generateHeader(doc)
+   
+    
+  }
 
   async generatePDF(): Promise<any> {
 
@@ -111,10 +119,7 @@ export class AppService {
       doc.text('',doc.x,doc.y)
       console.log(doc.y)
       if (doc.y > 650) {
-        this.generateFooter(doc)
-        doc.addPage();
-        
-        doc.y = 50
+        this.addpage(doc)
      }
       this.generatedivs(doc, doc.y, ["hello", "world", "123!"], 150, ["grey","#010101","grey"])
       
