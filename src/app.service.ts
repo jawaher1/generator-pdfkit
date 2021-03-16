@@ -14,13 +14,42 @@ export class AppService {
       const doc = new PDFDocument({
         size: 'LETTER',
         bufferPages: true,
+        margin : 10,
+        with : 410
       })
 
       // customize your PDF document
+      doc.rect(0, 20, doc.page.width , 120)
+      .fillOpacity(0.8)
+      .fill("blue", "#2F70B5")
       
-      doc.text('This is a footer', 20, doc.page.height - 50, {
-        lineBreak: false
-      }).moveDown();
+      doc.font('Helvetica-Bold').fontSize(30)
+      .fillColor('white').text('Seeyond Minvol Europe', 20,  50, {width : doc.page.width} ).moveDown()
+  
+      doc.font('Helvetica').fontSize(10)
+      .fillColor('white').text('Toutes les données relatives à la performance en EUR - 29/01/2021', 20,  80,  {width : doc.page.width})
+      
+      doc.moveDown(10)
+
+
+      doc.font('Helvetica').fontSize(15)
+      .fillColor('black').fontSize(15)
+      .fillColor('black').text('Points Clés', {
+        width: 410,
+        align: 'left'
+        }
+        ).moveDown()
+        doc.font('Helvetica').fontSize(10)
+        .fillColor('black').list(['Point 1', 'Point2', 'Point3'],{bulletIndent:20, textIndent:20});
+      
+        doc.rect(205, 205, doc.page.width , 120)
+        .fillOpacity(0.8)
+        .fill("white", "#2F70B5").fontSize(13)
+        .fillColor('black').text(`Caractéristiques .....`, 395,205
+        );
+      
+      
+      
       doc.end()
 
       const buffer = []
@@ -32,6 +61,5 @@ export class AppService {
     })
 
      return pdfBuffer
-    
   }
 }
